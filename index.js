@@ -4,10 +4,15 @@ import operatorRegistrationRoute from "./operators/operator_registration.js";
 import spotterRegistrationRoute from "./spotter/spotter_registration.js";
 import operatorLoginRoute from "./operators/operatorLoginRoute.js";
 import spotterLoginRoute from "./spotter/spotterLoginRoute.js";
+// index.js
+import cors from "cors";
+
+
 const { Pool } = pkg;
 
 const app = express();
 const PORT = 3000;
+
 
 // ---------------------------
 // POSTGRES CONFIG MOVED HERE
@@ -22,6 +27,8 @@ const pool = new Pool({
 
 // Middleware
 app.use(express.json());
+
+app.use(cors());
 
 // Health
 app.get("/", (req, res) => {
